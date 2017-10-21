@@ -22,14 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //make it visible
         window?.makeKeyAndVisible()
 
-        //define a layout for a root controller
-        let layout = UICollectionViewFlowLayout()
-        
-        //define a root controller
-        let friendsController = FriendsController(collectionViewLayout: layout)
-        
-        //asign nav controller as root controller of window view
-        window?.rootViewController = UINavigationController(rootViewController: friendsController)
+//        //define a layout for a root controller
+//        let layout = UICollectionViewFlowLayout()
+//
+//        //define a root controller
+//        let friendsController = FriendsController(collectionViewLayout: layout)
+//
+//        //asign nav controller as root controller of window view
+//        window?.rootViewController = UINavigationController(rootViewController: friendsController)
+
+        window?.rootViewController = CustomTabBarController()
         
         return true
     }

@@ -14,10 +14,12 @@
 		DA24A2E11F92B02500642642 /* messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA24A2DF1F92B02500642642 /* messenger.xcdatamodeld */; };
 		DA24A2E31F92B02500642642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA24A2E21F92B02500642642 /* Assets.xcassets */; };
 		DA24A2E61F92B02500642642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA24A2E41F92B02500642642 /* LaunchScreen.storyboard */; };
+		DA2D6B9C1F9AEF89002A228D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D6B9B1F9AEF89002A228D /* CustomTabBarController.swift */; };
 		DA68558D1F92EA66005777D5 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6855891F92EA66005777D5 /* Friend+CoreDataClass.swift */; };
 		DA68558E1F92EA66005777D5 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA68558A1F92EA66005777D5 /* Friend+CoreDataProperties.swift */; };
 		DA68558F1F92EA66005777D5 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA68558B1F92EA66005777D5 /* Message+CoreDataClass.swift */; };
 		DA6855901F92EA66005777D5 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA68558C1F92EA66005777D5 /* Message+CoreDataProperties.swift */; };
+		DAFD6D101F9AD8B2001F6062 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD6D0F1F9AD8B2001F6062 /* ChatLogController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +32,12 @@
 		DA24A2E21F92B02500642642 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA24A2E51F92B02500642642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA24A2E71F92B02500642642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA2D6B9B1F9AEF89002A228D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		DA6855891F92EA66005777D5 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DA68558A1F92EA66005777D5 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DA68558B1F92EA66005777D5 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DA68558C1F92EA66005777D5 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DAFD6D0F1F9AD8B2001F6062 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,10 +54,6 @@
 		DA24A2CC1F92B02500642642 = {
 			isa = PBXGroup;
 			children = (
-				DA6855891F92EA66005777D5 /* Friend+CoreDataClass.swift */,
-				DA68558A1F92EA66005777D5 /* Friend+CoreDataProperties.swift */,
-				DA68558B1F92EA66005777D5 /* Message+CoreDataClass.swift */,
-				DA68558C1F92EA66005777D5 /* Message+CoreDataProperties.swift */,
 				DA24A2D71F92B02500642642 /* messenger */,
 				DA24A2D61F92B02500642642 /* Products */,
 			);
@@ -70,9 +70,13 @@
 		DA24A2D71F92B02500642642 /* messenger */ = {
 			isa = PBXGroup;
 			children = (
+				DAFD6D111F9AD957001F6062 /* Controllers */,
+				DA6855891F92EA66005777D5 /* Friend+CoreDataClass.swift */,
+				DA68558A1F92EA66005777D5 /* Friend+CoreDataProperties.swift */,
+				DA68558B1F92EA66005777D5 /* Message+CoreDataClass.swift */,
+				DA68558C1F92EA66005777D5 /* Message+CoreDataProperties.swift */,
 				DA0D78F71F92BB3A007D1F65 /* Extentions.swift */,
 				DA24A2D81F92B02500642642 /* AppDelegate.swift */,
-				DA24A2DA1F92B02500642642 /* FriendsController.swift */,
 				DA24A2E21F92B02500642642 /* Assets.xcassets */,
 				DA24A2E41F92B02500642642 /* LaunchScreen.storyboard */,
 				DA24A2E71F92B02500642642 /* Info.plist */,
@@ -80,6 +84,16 @@
 				DA0D78F91F92D231007D1F65 /* FriendsControllerHelper.swift */,
 			);
 			path = messenger;
+			sourceTree = "<group>";
+		};
+		DAFD6D111F9AD957001F6062 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA24A2DA1F92B02500642642 /* FriendsController.swift */,
+				DAFD6D0F1F9AD8B2001F6062 /* ChatLogController.swift */,
+				DA2D6B9B1F9AEF89002A228D /* CustomTabBarController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,10 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFD6D101F9AD8B2001F6062 /* ChatLogController.swift in Sources */,
 				DA0D78F81F92BB3A007D1F65 /* Extentions.swift in Sources */,
 				DA68558D1F92EA66005777D5 /* Friend+CoreDataClass.swift in Sources */,
 				DA24A2DB1F92B02500642642 /* FriendsController.swift in Sources */,
 				DA24A2D91F92B02500642642 /* AppDelegate.swift in Sources */,
+				DA2D6B9C1F9AEF89002A228D /* CustomTabBarController.swift in Sources */,
 				DA24A2E11F92B02500642642 /* messenger.xcdatamodeld in Sources */,
 				DA6855901F92EA66005777D5 /* Message+CoreDataProperties.swift in Sources */,
 				DA0D78FA1F92D231007D1F65 /* FriendsControllerHelper.swift in Sources */,

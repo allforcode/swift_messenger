@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FriendsController.swift
 //  messenger
 //
 //  Created by Paul Dong on 15/10/17.
@@ -41,6 +41,13 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 100)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let layout = UICollectionViewFlowLayout()
+        let controller = ChatLogController(collectionViewLayout: layout)
+        controller.friend = messages![indexPath.item].friend
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 class MessageCell: BaseCell {
@@ -60,14 +67,31 @@ class MessageCell: BaseCell {
                 messageLabel.text = message
             }
             
-            if let nsDate = message?.date {
+            if let date = message?.date {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "h:mm a"
                 
-                let date = Date(timeIntervalSince1970: nsDate.timeIntervalSince1970)
+                let elapsedTimeInSeconds = Date().timeIntervalSince(date)
+                let secondInDays: TimeInterval = 60 * 60 * 24
+                
+                if elapsedTimeInSeconds > 7 * secondInDays {
+                    dateFormatter.dateFormat = "dd/MM/yy"
+                }else if elapsedTimeInSeconds > secondInDays {
+                    dateFormatter.dateFormat = "EEE"
+                }
+                
                 let time = dateFormatter.string(from: date)
                 timeLabel.text = "\(time)"
             }
+        }
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.rgb(red: 0, green: 134, blue: 249) : UIColor.white
+            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            messageLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            timeLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
         }
     }
     
@@ -145,6 +169,7 @@ class MessageCell: BaseCell {
         addConstraints(format: "H:|-88-[v0]|", views: containerView)
         addConstraints(format: "V:[v0(50)]", views: containerView)
         
+        //Vertically assign a View in the middle of its parent container
         addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         
         containerView.addSubview(nameLabel)
@@ -159,7 +184,6 @@ class MessageCell: BaseCell {
         containerView.addConstraints(format: "V:|[v0]-8-[v1(24)]|", views: nameLabel, messageLabel)
         containerView.addConstraints(format: "V:[v0(20)]|", views: hasReadImageView)
     }
-        
 }
 
 class BaseCell: UICollectionViewCell {
