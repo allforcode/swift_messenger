@@ -2,7 +2,7 @@
 //  Message+CoreDataProperties.swift
 //  messenger
 //
-//  Created by Paul Dong on 15/10/17.
+//  Created by Paul Dong on 22/10/17.
 //  Copyright © 2017 Paul Dong. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Message {
 
     @NSManaged public var date: Date?
     @NSManaged public var text: String?
+    @NSManaged public var isSender: Bool
     @NSManaged public var friend: Friend?
 
 }

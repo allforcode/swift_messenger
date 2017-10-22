@@ -45,7 +45,7 @@ extension FriendsController {
         
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
-            
+            //mark
             let mark = Friend(context: context)
             mark.name = "Mark Zuckerberg"
             mark.profileImageName = "zuckprofile"
@@ -54,18 +54,7 @@ extension FriendsController {
             createMessageWithText(text: text, friend: mark, minutesAgo: 2, context: context)
             
             //steve
-            let steve = Friend(context: context)
-            steve.name = "Steve Jobs"
-            steve.profileImageName = "steve_profile"
-            
-            text = "I am using Apple devices as much as possible ..."
-            createMessageWithText(text: text, friend: steve, minutesAgo: 0, context: context)
-            
-            text = "Apple creates great ios Devices for the world ..."
-            createMessageWithText(text: text, friend: steve, minutesAgo: 2, context: context)
-            
-            text = "Hellow ..."
-            createMessageWithText(text: text, friend: steve, minutesAgo: 1, context: context)
+            createSteveMessageWith(context: context)
             
             //donald
             let donald = Friend(context: context)
@@ -97,11 +86,36 @@ extension FriendsController {
         loadData()
     }
     
-    private func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext) {
+    private func createSteveMessageWith(context: NSManagedObjectContext) {
+        //steve
+        let steve = Friend(context: context)
+        steve.name = "Steve Jobs"
+        steve.profileImageName = "steve_profile"
+        createMessageWithText(text: "I am using Apple devices as much as possible ...", friend: steve, minutesAgo: 4, context: context)
+        createMessageWithText(text: "Apple creates great ios Devices for the world ...", friend: steve, minutesAgo: 3, context: context)
+        createMessageWithText(text: "Are you interested in buying an Apple device? We have a wide variety of Apple devices that will suit your needs. Please make your purchase with us.", friend: steve, minutesAgo: 2, context: context)
+        //response
+        createMessageWithText(text: "Yes, totally looking to buy an iPhone 7.", friend: steve, minutesAgo: 1, context: context, isSender: true)
+        
+        createMessageWithText(text: "Totally understand that you want the new iPhone 7, but you'll have to wait until September for the new release. Sorry but that's just how Apple likes to do things", friend: steve, minutesAgo: 0, context: context)
+        
+        createMessageWithText(text: "Absolutely, I'll just use my gigantic iPhone 6 Plus until then!!!", friend: steve, minutesAgo: 0, context: context, isSender: true)
+        
+        createMessageWithText(text: "Ok, cool", friend: steve, minutesAgo: 0, context: context)
+        
+        createMessageWithText(text: "Totally understand that you want the new iPhone 7, but you'll have to wait until September for the new release. Sorry but that's just how Apple likes to do things", friend: steve, minutesAgo: 0, context: context)
+        
+        createMessageWithText(text: "Absolutely, I'll just use my gigantic iPhone 6 Plus until then!!!", friend: steve, minutesAgo: 0, context: context, isSender: true)
+        
+        createMessageWithText(text: "Ok, cool", friend: steve, minutesAgo: 0, context: context)
+    }
+    
+    private func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false) {
         let messageSteve = Message(context: context)
         messageSteve.friend = friend
         messageSteve.text = text
         messageSteve.date = Date().addingTimeInterval(-minutesAgo * 60)
+        messageSteve.isSender = isSender
     }
     
     func loadData(){
